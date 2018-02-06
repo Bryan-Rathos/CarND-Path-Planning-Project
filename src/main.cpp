@@ -220,8 +220,8 @@ int main() {
 
   static const double max_vel = 49.5;
   static const double time_delta = 0.02;
-  static const double detection_distance = 25;
-  static const double detection_distance_back = 10;
+  static const double detection_range = 25;
+  static const double detection_range_behind = 10;
 
   State state = KEEP_LANE;
   //start in lane 1
@@ -299,7 +299,7 @@ int main() {
                 if(which_lane(d, lane))
                 { 
                   // Same lane
-                  if(s_distance > 0 && s_distance < detection_distance)
+                  if(s_distance > 0 && s_distance < detection_range)
                   {
                     car_ahead = true;
                     car_ahead_speed = check_speed * 2.24;    // Car speed is in m/s
@@ -308,7 +308,7 @@ int main() {
                 else if (which_lane(d, lane-1))
                 { 
                   // Left lane
-                  if(s_distance > -detection_distance_back && s_distance < detection_distance)
+                  if(s_distance > -detection_range_behind && s_distance < detection_range)
                   {
                     car_in_left_lane = true;
                   }
@@ -316,7 +316,7 @@ int main() {
                 else if (which_lane(d, lane+1))
                 { 
                   // Right lane
-                  if(s_distance > -detection_distance_back && s_distance < detection_distance)
+                  if(s_distance > -detection_range_behind && s_distance < detection_range)
                   {
                     car_in_right_lane = true;
                   }
@@ -337,10 +337,6 @@ int main() {
               {
                 state = SLOW_DOWN;
               } 
-              //else 
-              //{
-              //  state = KEEP_SPEED;
-              //}
             }  
             else 
             { 
