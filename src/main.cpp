@@ -308,7 +308,7 @@ int main() {
                 else if (which_lane(d, lane-1))
                 { 
                   // Left lane
-                  if(s_distance > -detection_range_behind && s_distance < detection_range)
+                  if(s_distance > -detection_range_behind && s_distance < detection_range+10)
                   {
                     car_in_left_lane = true;
                   }
@@ -316,7 +316,7 @@ int main() {
                 else if (which_lane(d, lane+1))
                 { 
                   // Right lane
-                  if(s_distance > -detection_range_behind && s_distance < detection_range)
+                  if(s_distance > -detection_range_behind && s_distance < detection_range+10)
                   {
                     car_in_right_lane = true;
                   }
@@ -337,6 +337,10 @@ int main() {
               {
                 state = SLOW_DOWN;
               } 
+              else
+              {
+                state = KEEP_SPEED;
+              }
             }  
             else 
             { 
@@ -414,9 +418,9 @@ int main() {
             }
 
             //In Frenet add evenly 30m evenly spaced points ahead of the starting reference
-            vector<double> next_wp0 = getXY(car_s+35, (2+4*lane), map_waypoints_s, map_waypoints_x, map_waypoints_y);
-            vector<double> next_wp1 = getXY(car_s+70, (2+4*lane), map_waypoints_s, map_waypoints_x, map_waypoints_y);
-            vector<double> next_wp2 = getXY(car_s+105, (2+4*lane), map_waypoints_s, map_waypoints_x, map_waypoints_y);
+            vector<double> next_wp0 = getXY(car_s+30, (2+4*lane), map_waypoints_s, map_waypoints_x, map_waypoints_y);
+            vector<double> next_wp1 = getXY(car_s+60, (2+4*lane), map_waypoints_s, map_waypoints_x, map_waypoints_y);
+            vector<double> next_wp2 = getXY(car_s+90, (2+4*lane), map_waypoints_s, map_waypoints_x, map_waypoints_y);
 
             ptsx.push_back(next_wp0[0]);
             ptsx.push_back(next_wp1[0]);
