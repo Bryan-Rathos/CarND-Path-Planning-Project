@@ -1,6 +1,6 @@
-#Path Planning Project
+# Path Planning Project
 
-##Overview
+## Overview
 The aim of this project is to navigate a car through traffic in a highway scenario by generating appropriate trajectories and planning behaviors according to traffic rules. The simulator provides information about the ego vehicle localization data as well as sensor fusion data, with localization data of other vehicles it senses.
 
 The car's localization data incluse the following measurements:
@@ -16,7 +16,7 @@ The Sensor fusion data including the localization data of other vehicles is as f
 
  The code should output next `x` and `y` desired values (global co-ordinates) that the car will follow. The trajectory generated should be such that the normal, tangential and total accelerations, and jerk are within the maximumum allowable limits. Further, the maximum allowable speed limit is 50 miles/hour.
 
-##Trajectory generation
+## Trajectory generation
 
 When we provide the points for the car to follow the car will go between two points within 20 milliseconds. In order that we follow the 50 MPH speed limit we need to generate points which are 0.5m apart. Since the car moves 50 times a second, a distance of 0.5m per move will create a velocity of 25 m/s. 25 m/s is close to 50 MPH. 
 
